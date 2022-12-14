@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/GameMenu.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/Themes/FontSeriesOrbit.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Ressources/Themes/MenuTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Logo_GODOT_600x.png" type="Texture" id=4]
+
+[node name="GameMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ScreenAnimation" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SpawnTimer" type="Timer" parent="ScreenAnimation"]
+unique_name_in_owner = true
+wait_time = 0.5
+autostart = true
+
+[node name="UIMenu" type="Control" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+theme = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="UIMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -207.0
+margin_top = 100.0
+margin_right = 207.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 2 )
+text = "FADING GHOST"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 50.0
+
+[node name="StartGame" type="Button" parent="UIMenu/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 48.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Start Game"
+
+[node name="Credits" type="Button" parent="UIMenu/VBoxContainer"]
+margin_top = 52.0
+margin_right = 200.0
+margin_bottom = 100.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Credits"
+
+[node name="Credits" type="Panel" parent="UIMenu"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -200.0
+margin_right = 250.0
+margin_bottom = 200.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIMenu/Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -235.0
+margin_top = -180.0
+margin_right = 235.0
+margin_bottom = 147.0
+rect_rotation = -0.0551979
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Ghost asset done by me :)
+
+All other graphical assets are from the excellent https://kenney.nl
+
+Fonts : \"Series Orbit\" for the title, \"Stanberry\" for the texts.
+
+Made with Godot Engine 3.5.1 for Godot Wild Jam #52"
+
+[node name="BackCredits" type="Button" parent="UIMenu/Credits"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = -10.0
+focus_mode = 0
+text = "BACK"
+
+[node name="TextureRect" type="TextureRect" parent="UIMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -95.0
+margin_top = -80.0
+margin_right = 95.0
+margin_bottom = -10.0
+texture = ExtResource( 4 )
+expand = true
+
+[connection signal="timeout" from="ScreenAnimation/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="button_up" from="UIMenu/VBoxContainer/StartGame" to="." method="_on_StartGame_button_up"]
+[connection signal="button_up" from="UIMenu/VBoxContainer/Credits" to="." method="_on_Credits_button_up"]
+[connection signal="button_up" from="UIMenu/Credits/BackCredits" to="." method="_on_BackCredits_button_up"]

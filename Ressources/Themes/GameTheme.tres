@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://Ressources/Themes/FontStandberrySmall.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Ressources/Themes/ButtonPressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://Ressources/Themes/ButtonNormal.tres" type="StyleBox" id=3]
+[ext_resource path="res://Ressources/Themes/PanelThin.tres" type="StyleBox" id=4]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/hover = ExtResource( 2 )
+Button/styles/normal = ExtResource( 3 )
+Button/styles/pressed = ExtResource( 2 )
+Panel/styles/panel = ExtResource( 4 )
