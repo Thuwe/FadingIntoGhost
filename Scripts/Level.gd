@@ -9,6 +9,8 @@ onready var soul_character:Node2D = get_node("%SoulCharacter")
 onready var spawn:Sprite = get_node("%Spawn")
 onready var text_ui:Control = get_node("%TextUi")
 
+var game_parent:Node2D
+
 func _ready() -> void:
 	text_ui.visible = true
 	GameData.is_in_light = false
@@ -17,20 +19,23 @@ func _ready() -> void:
 #			if one_node.is_in_group("Switch"):
 #				one_node.activate_switch()
 #				one_node.connect("exited_light", soul_character, "on_light_exited")
-	soul_character.connect("faded", self, "reload_level")
+	var _con_err = soul_character.connect("faded", self, "reload_level")
 	GameData.fading_level = GameData.default_fading
 	soul_character.position = spawn.position
 	soul_character.set_physics_process(false)
 
-func _on_Exit_body_entered(body) -> void:
+func _on_Exit_body_entered(_body) -> void:
 	soul_character.queue_free()
 	emit_signal("level_finished", next_level)
 	
 func reload_level() -> void:
+	soul_character.set_physics_process(false)
+	yield(game_parent.faded_screen(), "completed")
 	GameData.fading_level = GameData.default_fading
 	soul_character.position = spawn.position
 #	GameData.is_in_light = false
 	soul_character.change_visibility(GameData.default_fading)
+	soul_character.set_physics_process(true)
 	if objects != null:
 		for one_node in objects.get_children():
 			if one_node.is_in_group("Switch"):

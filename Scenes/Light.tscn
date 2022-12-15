@@ -53,6 +53,7 @@ speed_scale = 0.5
 unique_name_in_owner = true
 texture = ExtResource( 2 )
 texture_scale = 0.1
+energy = 1.5
 shadow_enabled = true
 
 [node name="LightArea" type="Area2D" parent="Light2D"]

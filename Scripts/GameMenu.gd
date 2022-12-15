@@ -12,11 +12,11 @@ func _ready():
 	randomize()
 	_on_SpawnTimer_timeout()
 	
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_StartGame_button_up():
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	var _return = get_tree().change_scene("res://Scenes/Game.tscn")
 
 
 func _on_Credits_button_up():

@@ -11,4 +11,4 @@ func _input(event) -> void:
 		if event.is_action_pressed("quit"):
 			get_tree().paused = false
 			self.visible = false
-			get_tree().change_scene("res://Scenes/GameMenu.tscn")
+			var _chg_err = get_tree().change_scene("res://Scenes/GameMenu.tscn")

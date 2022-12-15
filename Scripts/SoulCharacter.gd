@@ -6,7 +6,7 @@ signal faded
 func _ready():
 	$AnimatedSprite.play("default")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var collision:KinematicCollision2D = null
 	var direction:Vector2 = Vector2(0.0, 0.0)
 	var make_move:bool = false
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if make_move:
 		collision = move_and_collide(direction, true, true, true)
 		if collision == null:
-			move_and_collide(direction)
+			collision = move_and_collide(direction)
 			if GameData.is_in_light:
 				GameData.fading_level -= 1
 				print(GameData.fading_level)
