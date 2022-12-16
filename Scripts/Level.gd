@@ -59,3 +59,4 @@ func _on_Switch_activated(torch_name):
 		for one_node in objects.get_children():
 			if one_node.name == torch_name:
 				one_node.activate_light()
+

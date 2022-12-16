@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FadingGhost"
+config/description="Try to reach the Valhalla before fading."
 run/main_scene="res://Scenes/GameMenu.tscn"
 config/icon="res://icon.png"
 
