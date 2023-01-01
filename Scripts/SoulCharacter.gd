@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 signal faded
 
+onready var timer_movement = get_node("%TimerMovement")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("default")
@@ -14,20 +16,21 @@ func _physics_process(_delta):
 		self.set_collision_mask_bit(2, false)
 	else:
 		self.set_collision_mask_bit(2, true)
-	if Input.is_action_just_pressed("go_right"):
+	if Input.is_action_pressed("go_right"):
 		direction = Vector2(16.0, 0.0)
 		make_move = true
-	elif Input.is_action_just_pressed("go_left"):
+	elif Input.is_action_pressed("go_left"):
 		direction = Vector2(-16.0, 0.0)
 		make_move = true
-	elif Input.is_action_just_pressed("go_down"):
+	elif Input.is_action_pressed("go_down"):
 		direction = Vector2(0.0, 16.0)
 		make_move = true
-	elif Input.is_action_just_pressed("go_up"):
+	elif Input.is_action_pressed("go_up"):
 		direction = Vector2(0.0, -16.0)
 		make_move = true
 
-	if make_move:
+	if make_move && timer_movement.is_stopped():
+		timer_movement.start()
 		collision = move_and_collide(direction, true, true, true)
 		if collision == null:
 			collision = move_and_collide(direction)

@@ -43,3 +43,9 @@ unique_name_in_owner = true
 position = Vector2( -6.55651e-07, -4.76837e-07 )
 frames = SubResource( 6 )
 frame = 1
+
+[node name="TimerMovement" type="Timer" parent="."]
+unique_name_in_owner = true
+process_mode = 0
+wait_time = 0.2
+one_shot = true

@@ -3,6 +3,7 @@ extends Node2D
 onready var credits:Panel = get_node("%Credits")
 onready var screen_animation:Node2D = get_node("%ScreenAnimation")
 onready var spawn_timer:Timer = get_node("%SpawnTimer")
+onready var versions:Panel = get_node("%Versions")
 
 var fading_ghost = preload("res://Scenes/FadingGhost.tscn")
 
@@ -32,3 +33,11 @@ func _on_SpawnTimer_timeout():
 	var rand_y = rand_range(0, 600)
 	node_ghost.position = Vector2(rand_x, rand_y)
 	screen_animation.add_child(node_ghost)
+
+
+func _on_Versions_button_up():
+	versions.show()
+
+
+func _on_BackVersion_button_up():
+	versions.hide()
